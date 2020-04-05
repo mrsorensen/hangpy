@@ -2,6 +2,10 @@
 
 import random
 import os
+from os.path import expanduser
+
+# Path to word file
+pathToWords = '~/hangpy/words.txt'
 
 # Prints a gallow with the man hanging depending on how many lives you got left
 def gallow(lives):
@@ -121,8 +125,8 @@ def submitGuess(userInput, guesses):
     else:
         return False
 
-# Sets wordlist to a random word in the word file
-wordFile = open('words.txt')
+# Open and read file with words and pick a random word
+wordFile = open(expanduser(pathToWords))
 wordList = wordFile.read().split('\n')
 wordFile.close()
 secretWord = random.choice(wordList).lower()
